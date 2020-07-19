@@ -1,6 +1,7 @@
 package com.yehoshuafish.klfapplication;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.faces.annotation.FacesConfig;
 import javax.security.enterprise.authentication.mechanism.http.CustomFormAuthenticationMechanismDefinition;
 import javax.security.enterprise.authentication.mechanism.http.LoginToContinue;
 import javax.security.enterprise.identitystore.DatabaseIdentityStoreDefinition;
@@ -11,7 +12,7 @@ import javax.security.enterprise.identitystore.DatabaseIdentityStoreDefinition;
  */
 @DatabaseIdentityStoreDefinition(
         dataSourceLookup = "jdbc/klfAppDS",
-        callerQuery = "select user_password from users where username = ?"
+        callerQuery = "select hash from users where username = ?"
 )
 @CustomFormAuthenticationMechanismDefinition(
         loginToContinue = @LoginToContinue(
@@ -21,6 +22,9 @@ import javax.security.enterprise.identitystore.DatabaseIdentityStoreDefinition;
                 useForwardToLogin = false
         )
 )
+//I use the @FacesConfig annotation so that I don't have to create my own
+//face-config file
+@FacesConfig
 @ApplicationScoped
 public class ApplicationConfiguration {
     
