@@ -37,10 +37,7 @@ public class User implements Serializable {
     private String username;
     
     @Column(name = "hash", nullable = false)
-    private byte[] passwordHash;
-    
-    @Column(name = "salt", nullable = false)
-    private String salt;
+    private String passwordHash;
 
     @OneToMany(mappedBy = "user")
     Set<UserActivity> actions;
@@ -48,11 +45,10 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(String name, String username, byte[] passwordHash, String salt) {
+    public User(String name, String username, String passwordHash) {
         this.name = name;
         this.username = username;
         this.passwordHash = passwordHash;
-        this.salt = salt;
     }
 
     public Integer getId() {
@@ -67,12 +63,8 @@ public class User implements Serializable {
         return username;
     }
 
-    public byte[] getPasswordHash() {
+    public String getPasswordHash() {
         return passwordHash;
-    }
-
-    public String getSalt() {
-        return salt;
     }
 
     @Override
