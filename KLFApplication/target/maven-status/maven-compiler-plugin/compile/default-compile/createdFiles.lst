@@ -1,0 +1,7 @@
+com\yehoshuafish\klfapplication\services\DataService.class
+com\yehoshuafish\klfapplication\backingbeans\HomeBackingBean.class
+com\yehoshuafish\klfapplication\services\DataInitializer.class
+com\yehoshuafish\klfapplication\entities\Activity.class
+com\yehoshuafish\klfapplication\entities\UserActivity.class
+com\yehoshuafish\klfapplication\entities\User.class
+com\yehoshuafish\klfapplication\backingbeans\UserBackingBean.class
