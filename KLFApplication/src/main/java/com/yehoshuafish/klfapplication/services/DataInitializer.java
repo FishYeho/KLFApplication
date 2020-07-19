@@ -18,8 +18,8 @@ public class DataInitializer {
     
     public void setup(@Observes @Initialized(ApplicationScoped.class) Object event) {
         if(dataService.getAllUsers().isEmpty()) {
-            User bob = dataService.createUser("bob", "itsmrbob", new byte[4], "123456789");
-            User jim = dataService.createUser("jim", "jimbo", new byte[4], "123456789");
+            User bob = dataService.createUser("bob", "itsmrbob", "itsmrbob");
+            User jim = dataService.createUser("jim", "jimbo", "jimbo");
             
             dataService.createActivity("Login");
             dataService.createActivity("Logout");

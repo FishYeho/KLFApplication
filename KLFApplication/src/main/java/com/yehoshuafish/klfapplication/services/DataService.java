@@ -5,8 +5,10 @@ import com.yehoshuafish.klfapplication.entities.User;
 import java.util.List;
 import java.util.Optional;
 import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.security.enterprise.identitystore.Pbkdf2PasswordHash;
 import javax.transaction.Transactional;
 
 /**
@@ -19,9 +21,12 @@ public class DataService {
     @PersistenceContext(unitName="klfApplication")
     EntityManager em;
     
+    @Inject
+    Pbkdf2PasswordHash passwordHasher;
+    
     @Transactional
-    public User createUser(String name, String username, byte[] hash, String salt) {
-        User newUser = new User(name, username, hash, salt);
+    public User createUser(String name, String username, String hash) {
+        User newUser = new User(name, username, passwordHasher.generate(hash.toCharArray()));
         em.persist(newUser);
         em.flush();
         return newUser;
