@@ -67,13 +67,13 @@ public class UserBackingBean {
         dataService.createUser(name, username, password);
     }
     
-    public void onRowEdit(RowEditEvent<User> event) {
-        FacesMessage msg = new FacesMessage("User Edited", event.getObject().getId().toString());
+    public void onRowEdit() {
+        FacesMessage msg = new FacesMessage("User Edited", null);
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
     
-    public void onRowCancel(RowEditEvent<User> event) {
-        FacesMessage msg = new FacesMessage("Edit Cancelled", event.getObject().getId().toString());
+    public void onRowCancel() {
+        FacesMessage msg = new FacesMessage("Edit Cancelled", null);
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 }
