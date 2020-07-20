@@ -18,6 +18,8 @@ In order to run the project, these are the steps that you must follow:
 
 -Run the CreateTables.sql file which can be found in the src/test/resources folder
 
+-Database credentials: Username: sample_user Password: sample_app
+
 -Clean and build the project in Netbeans or your preferred IDE
 
 -Run the project in Netbeans or your preferred IDE
