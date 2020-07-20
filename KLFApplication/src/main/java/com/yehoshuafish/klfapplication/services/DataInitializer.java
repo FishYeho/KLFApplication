@@ -7,7 +7,9 @@ import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
 /**
- *
+ * This class is used to generate mock data in order to test the application
+ * It's method is used to create User and Activity objects
+ * 
  * @author Shuey
  */
 @ApplicationScoped

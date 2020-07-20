@@ -23,7 +23,7 @@
             
             <p:panel>
                 <f:facet name="header">
-                    <h1 style="text-align: center"> Welcome to KLF V2.0 </h1>
+                    <h1 style="text-align: center"> Welcome to the KLF Coding Challenge </h1>
                 </f:facet>
             </p:panel>
             
@@ -38,7 +38,31 @@
                 
             <p:panel>
                 <f:facet name="footer">
-
+                    <div class="ui-g">
+                    <div class="ui-g-4" />
+                    <div class="ui-g-4">
+                        <h2 style="text-align: center;">Contact Us</h2>
+                        <h:form id="contactForm">
+                            <p:messages id="messages" globalOnly="true"/>
+                            <h:panelGrid columns="3" cellpadding="3" style="margin: 0 auto;">
+                                
+                                <p:outputLabel for="emailText" value="Email Address"/>
+                                <p:inputText id="emailText" value="#{homeBackingBean.contactEmail}"/>
+                                <p:message for="emailText" />
+                                
+                                <p:outputLabel for="nameText" value="Name"/>
+                                <p:inputText id="nameText" value="#{homeBackingBean.contactName}"/>
+                                <p:message for="nameText" />
+                                
+                                <p:outputLabel for="messageText" value="Message"/>
+                                <p:inputTextarea id="messageText" value="#{homeBackingBean.contactText}" style="width: 96%; height: 100%"/>
+                                <p:message for="messageText" />
+                                
+                                <p:commandButton id="submit" update="@form" value="Submit" action="#{homeBackingBean.onSubmitContactForm}" ajax="false"/>
+                            </h:panelGrid>
+                        </h:form>
+                    </div>
+                </div>
                 </f:facet>
             </p:panel>
         </h:body>

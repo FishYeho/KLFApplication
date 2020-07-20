@@ -13,7 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
- *
+ * This class represents the User_Activity bridging table Entity of the database
+ * 
  * @author Shuey
  */
 @Entity

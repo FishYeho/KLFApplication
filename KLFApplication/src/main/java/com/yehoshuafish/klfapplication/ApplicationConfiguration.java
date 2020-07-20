@@ -7,8 +7,10 @@ import javax.security.enterprise.authentication.mechanism.http.LoginToContinue;
 import javax.security.enterprise.identitystore.DatabaseIdentityStoreDefinition;
 
 /**
- *
- * @author Shuey
+ * Class that handles the initial configuration of the application
+ * Specifies that the application should use the jdbc/klfAppDS data source
+ * 
+ * @author Shuey + The official @Payara Youtube channel
  */
 @DatabaseIdentityStoreDefinition(
         dataSourceLookup = "jdbc/klfAppDS",

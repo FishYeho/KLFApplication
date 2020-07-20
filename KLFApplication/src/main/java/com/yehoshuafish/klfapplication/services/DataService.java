@@ -12,7 +12,10 @@ import javax.security.enterprise.identitystore.Pbkdf2PasswordHash;
 import javax.transaction.Transactional;
 
 /**
- *
+ * This class is used to handle all CRUD operations of the database
+ * It contains methods to create new users, edit existing users, delete
+ * existing users and query information about the existing users
+ * 
  * @author Shuey
  */
 @ApplicationScoped

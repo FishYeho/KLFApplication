@@ -14,7 +14,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
- *
+ * This class represents the Activity Entity of the database
+ * 
  * @author Shuey
  */
 @Entity

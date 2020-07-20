@@ -16,7 +16,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.NotEmpty;
 
 /**
- *
+ * This class is the controller of the login.xhtml page
+ * It contains methods to handle all of the login functionality
+ * 
  * @author Shuey
  */
 @RequestScoped

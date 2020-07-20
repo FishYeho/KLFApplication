@@ -12,7 +12,10 @@ import javax.inject.Named;
 import org.primefaces.event.RowEditEvent;
 
 /**
- *
+ * This class is the controller of the users.xhtml page
+ * It contains a method to create new users, as well as to edit the current
+ * users that are listed in the users table
+ * 
  * @author Shuey
  */
 @RequestScoped
@@ -73,6 +76,4 @@ public class UserBackingBean {
         FacesMessage msg = new FacesMessage("Edit Cancelled", event.getObject().getId().toString());
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
-    
-    
 }

@@ -23,7 +23,7 @@
             
             <h1 style="text-align: center">User Management</h1>
             <h:form id="usersForm">
-                <p:dataTable value="#{usersBackingBean.allUsers}" var="user" editable="true">
+                <p:dataTable id="usersTable" value="#{usersBackingBean.allUsers}" var="user" editable="true">
                     <p:growl id="msgs" showDetail="true"/>
 
                     <p:ajax event="rowEdit" listener="#{userBackingBean.onRowEdit}"/>
@@ -72,7 +72,7 @@
                 <div class="ui-g">
                     <div class="ui-g-4" />
                     <div class="ui-g-4">
-                        <h3 style="text-align: center;">Login with your Credentials</h3>
+                        <h2 style="text-align: center;">Create a new User</h2>
                         <h:form id="createUserForm">
                             <p:messages id="messages" globalOnly="true"/>
                             <h:panelGrid columns="3" cellpadding="3" style="margin: 0 auto;">
@@ -89,7 +89,7 @@
                                 <p:inputText id="passwordText" value="#{usersBackingBean.password}" type="password"/>
                                 <p:message for="passwordText" />
                                 
-                                <p:commandButton id="submit" update="@form" value="Create User" action="#{usersBackingBean.createUser}" ajax="false"/>
+                                <p:commandButton id="submit" update="@usersTable" value="Create User" action="#{usersBackingBean.createUser}" ajax="false"/>
                             </h:panelGrid>
                         </h:form>
                     </div>
