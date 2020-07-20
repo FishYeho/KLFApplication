@@ -9,6 +9,7 @@
             <title>Users Page</title>
         </h:head>
         <h:body>
+            <h:outputStylesheet library="css" name="styles.css"/>
             
             <p:menubar>
                 <f:facet name="options">
@@ -20,20 +21,81 @@
                 </f:facet>
             </p:menubar>
             
-            <h1>Users:</h1>
-            <p:dataTable value="#{usersBackingBean.allUsers}" var="user">
-                <p:column headerText="User ID">
-                    <h:outputText value="#{user.id}"/>
-                </p:column>
-                <p:column headerText="Name">
-                    <h:outputText value="#{user.name}"/>
-                </p:column>
-                <p:column headerText="Username">
-                    <h:outputText value="#{user.username}"/>
-                </p:column>
-            </p:dataTable>
+            <h1 style="text-align: center">User Management</h1>
+            <h:form id="usersForm">
+                <p:dataTable value="#{usersBackingBean.allUsers}" var="user" editable="true">
+                    <p:growl id="msgs" showDetail="true"/>
+
+                    <p:ajax event="rowEdit" listener="#{userBackingBean.onRowEdit}"/>
+                    <p:ajax event="rowEditCancel" listener="#{userBackingBean.onRowCancel}"/>
+
+                    <p:column headerText="User ID">
+                        <p:cellEditor>
+                            <f:facet name="output">
+                                <h:outputText value="#{user.id}" />
+                            </f:facet>
+                            <f:facet name="input">
+                                <p:inputText id="idInput" value="#{user.id}" style="width:100%"/>
+                            </f:facet>
+                        </p:cellEditor>
+                    </p:column>
+
+                    <p:column headerText="Name">
+                        <p:cellEditor>
+                            <f:facet name="output">
+                                <h:outputText value="#{user.name}" />
+                            </f:facet>
+                            <f:facet name="input">
+                                <p:inputText id="nameInput" value="#{user.name}" style="width:100%"/>
+                            </f:facet>
+                        </p:cellEditor>
+                    </p:column>
+
+                    <p:column headerText="Username">
+                        <p:cellEditor>
+                            <f:facet name="output">
+                                <h:outputText value="#{user.username}" />
+                            </f:facet>
+                            <f:facet name="input">
+                                <p:inputText id="usernameInput" value="#{user.username}" style="width:100%"/>
+                            </f:facet>
+                        </p:cellEditor>
+                    </p:column>
+
+                    <p:column style="width:35px">
+                        <p:rowEditor />
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+            
+            <p:outputPanel>
+                <div class="ui-g">
+                    <div class="ui-g-4" />
+                    <div class="ui-g-4">
+                        <h3 style="text-align: center;">Login with your Credentials</h3>
+                        <h:form id="createUserForm">
+                            <p:messages id="messages" globalOnly="true"/>
+                            <h:panelGrid columns="3" cellpadding="3" style="margin: 0 auto;">
+                                
+                                <p:outputLabel for="nameText" value="Name"/>
+                                <p:inputText id="nameText" value="#{usersBackingBean.name}"/>
+                                <p:message for="nameText" />
+                                
+                                <p:outputLabel for="usernameText" value="Username"/>
+                                <p:inputText id="usernameText" value="#{usersBackingBean.username}"/>
+                                <p:message for="usernameText" />
+                                
+                                <p:outputLabel for="passwordText" value="Password"/>
+                                <p:inputText id="passwordText" value="#{usersBackingBean.password}" type="password"/>
+                                <p:message for="passwordText" />
+                                
+                                <p:commandButton id="submit" update="@form" value="Create User" action="#{usersBackingBean.createUser}" ajax="false"/>
+                            </h:panelGrid>
+                        </h:form>
+                    </div>
+                </div>
+            </p:outputPanel>
         </h:body>
     </f:view>
-    
 </html>
 
