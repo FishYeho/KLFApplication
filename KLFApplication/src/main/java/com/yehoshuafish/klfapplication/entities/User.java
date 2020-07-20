@@ -21,7 +21,9 @@ import javax.persistence.Table;
 @Table(name = "users")
 @NamedQueries({
     @NamedQuery(name = "User.all", query = "select u from User u order by u.id"),
-    @NamedQuery(name = "User.byUsername", query = "select u from User u where u.username = :username")
+    @NamedQuery(name = "User.byUsername", query = "select u from User u where u.username = :username"),
+    @NamedQuery(name = "User.editNameByUsername", query = "update User set name = :name where username = :username"),
+    @NamedQuery(name = "User.deleteByUsername", query = "delete from User where username = :username"),
 })
 public class User implements Serializable {
     

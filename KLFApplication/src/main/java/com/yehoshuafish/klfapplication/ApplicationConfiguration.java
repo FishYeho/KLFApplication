@@ -23,7 +23,7 @@ import javax.security.enterprise.identitystore.DatabaseIdentityStoreDefinition;
         )
 )
 //I use the @FacesConfig annotation so that I don't have to create my own
-//face-config file
+//faces-config file
 @FacesConfig
 @ApplicationScoped
 public class ApplicationConfiguration {

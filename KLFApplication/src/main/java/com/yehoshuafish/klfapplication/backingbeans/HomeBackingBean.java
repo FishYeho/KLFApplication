@@ -41,9 +41,6 @@ public class HomeBackingBean {
         //String username = securityContext.getCallerPrincipal().getName();
         this.currentUser = dataService.getUser(username);
         this.currentActivities = dataService.getAllActivities();
-//        this.currentUser.ifPresent(user -> {
-//            this.currentActivities = dataService.getActivitiesByUser(user);
-//        });
     }
     
     public User getCurrentUser() {

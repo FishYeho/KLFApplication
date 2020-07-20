@@ -60,19 +60,16 @@ public class LoginBackingBean {
                 facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Invalid Credentials", null));
                 break;
             case SUCCESS:
-                getExternalContext().redirect(getExternalContext().getRequestContextPath() + "/app/index.xhtml");
+                getExternalContext().redirect(getExternalContext().getRequestContextPath() + "app/index.xhtml");
                 break;
         }
     }
     
-    public void logout() {
-        
-    }
-    
     /**
-     * Tiny helper method
-     * @author https://www.youtube.com/watch?v=odJIoyFeAbk&list=PLFMhxiCgmMR-wxd1BAFiSGdDGROxRgDDX&index=14
-     * @return 
+     * Helper method that handles the user login
+     * @author The official @Payara YouTube channel
+     * 
+     * @return An object of type AuthenticationStatus
      */
     private AuthenticationStatus processAuthentication() {
         ExternalContext externalContext = getExternalContext();
@@ -83,8 +80,10 @@ public class LoginBackingBean {
     }
     
     /**
-     * Tiny helper method
-     * @return 
+     * Helper method that returns the ExternalContext object of the application
+     * @author The official @Payara YouTube channel
+     * 
+     * @return The ExternalContext object
      */
     private ExternalContext getExternalContext() {
         return facesContext.getExternalContext();

@@ -52,6 +52,23 @@ public class DataService {
                 .findFirst();
     }
     
+    public Optional<User> updateName(String name, String username) {
+        return em.createNamedQuery("User.editNameByUsername", User.class)
+                .setParameter("name", name)
+                .setParameter("username", username)
+                .getResultList()
+                .stream()
+                .findFirst();
+    }
+    
+    public Optional<User> deleteUser(String username) {
+        return em.createNamedQuery("User.deleteByUsername", User.class)
+                .setParameter("username", username)
+                .getResultList()
+                .stream()
+                .findFirst();
+    }
+    
     public List<Activity> getAllActivities() {
         return em.createNamedQuery("Activity.all", Activity.class).getResultList();
     }
