@@ -14,14 +14,14 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
- *
+ * This class represents the Activity Entity of the database
+ * 
  * @author Shuey
  */
 @Entity
 @Table(name = "activity")
 @NamedQueries({
     @NamedQuery(name = "Activity.all", query = "select a from Activity a order by a.id"),
-    //@NamedQuery(name = "Activity.byUser", query = "select a from Activity a where a.actions.user.id = :userId")
 })
 public class Activity implements Serializable {
     
@@ -49,6 +49,18 @@ public class Activity implements Serializable {
 
     public String getName() {
         return name;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setActions(Set<UserActivity> actions) {
+        this.actions = actions;
     }
 
     @Override

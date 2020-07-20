@@ -14,14 +14,17 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
- *
+ * This class represents the User Entity of the database
+ * 
  * @author Shuey
  */
 @Entity
 @Table(name = "users")
 @NamedQueries({
     @NamedQuery(name = "User.all", query = "select u from User u order by u.id"),
-    @NamedQuery(name = "User.byUsername", query = "select u from User u where u.username = :username")
+    @NamedQuery(name = "User.byUsername", query = "select u from User u where u.username = :username"),
+    @NamedQuery(name = "User.editNameByUsername", query = "update User set name = :name where username = :username"),
+    @NamedQuery(name = "User.deleteByUsername", query = "delete from User where username = :username"),
 })
 public class User implements Serializable {
     
@@ -37,10 +40,7 @@ public class User implements Serializable {
     private String username;
     
     @Column(name = "hash", nullable = false)
-    private byte[] passwordHash;
-    
-    @Column(name = "salt", nullable = false)
-    private String salt;
+    private String passwordHash;
 
     @OneToMany(mappedBy = "user")
     Set<UserActivity> actions;
@@ -48,11 +48,10 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(String name, String username, byte[] passwordHash, String salt) {
+    public User(String name, String username, String passwordHash) {
         this.name = name;
         this.username = username;
         this.passwordHash = passwordHash;
-        this.salt = salt;
     }
 
     public Integer getId() {
@@ -67,12 +66,8 @@ public class User implements Serializable {
         return username;
     }
 
-    public byte[] getPasswordHash() {
+    public String getPasswordHash() {
         return passwordHash;
-    }
-
-    public String getSalt() {
-        return salt;
     }
 
     @Override

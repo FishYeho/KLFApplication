@@ -8,20 +8,97 @@
         <h:head>
             <title>Home Page</title>
         </h:head>
+        
         <h:body>
-            <p:panel>
-                <p:dataList value="#{homeBackingBean.currentActivities}" var="activity" type="ordered">
-                    <f:facet name="header">
-                        #{homeBackingBean.currentUser.username}
-                    </f:facet>
-                    #{activity.name}
-                </p:dataList>
-                
-                <f:facet name="footer">
+            <h:outputStylesheet library="css" name="styles.css"/>
+            <p:menubar>
+                <f:facet name="options">
                     <h:form>
-                        <!-- JSF knows that action="users" will bring us to the users page -->
-                        <p:commandButton value="All Users" action="users?faces-redirect=true" />
+                        <p:commandButton value="Home" icon="pi pi-home" action="index?faces-redirect=true" />
+                        <p:commandButton value="Manage Users" action="users?faces-redirect=true" />
+                        <p:commandButton value="Login" action="/login?faces-redirect=true" />
+                        <p:commandButton value="Logout" action="#{homeBackingBean.logout}" />
                     </h:form>
+                </f:facet>
+            </p:menubar>
+            
+            <p:panel>
+                <f:facet name="header">
+                    <h1 style="text-align: center"> Welcome to Yehoshua's KLF Coding Assignment </h1>
+                </f:facet>
+            </p:panel>
+            
+            <p:panel>
+                <h2 style="text-align: center">Key Features of the Website</h2>
+                <p style="text-align: center"> 
+                    This website contains three modules as per the specifications of the assignment:
+                </p>
+            </p:panel>
+            
+            <p:panel>
+                <h3 style="text-align: center">1. The User Management Page</h3>
+                <p style="text-align: center"> 
+                    The user management page was created in order to be able to
+                    add new users to the website's database, as well as to 
+                    modify the fields of the site's existing users. This page can
+                    be accessed by clicking on the "Manage Users" button located
+                    in the Navbar.
+                </p>
+            </p:panel>
+            
+            <p:panel>
+                <h3 style="text-align: center">2. The Home Page</h3>
+                <p style="text-align: center"> 
+                    This home page was meant to be the landing page of the
+                    website and needed to incorporate the following three modules.
+                    First, it needed a Navbar which can be seen at the top of
+                    this page. Second, it was required to have a contact form,
+                    available at the bottom of this page. And lastly, it needed
+                    to have a login form, which I decided to make an individual
+                    page in order to allow for the proper separation of concerns.
+                    The login form can be accessed by clicking on the "login" button
+                    located in the Navbar.
+                </p>
+            </p:panel>
+            
+            <p:panel>
+                <h3 style="text-align: center">3. The Reports Page</h3>
+                <p style="text-align: center"> 
+                    This reports page was required to produce a report that
+                    would display which users have been active on the website, as
+                    well as what activities they were performing. Unfortunately, 
+                    the reports page is still in development and will not be available
+                    in this version of the assignment.
+                </p>
+            </p:panel>
+                
+            <p:panel>
+                <f:facet name="footer">
+                    <div class="ui-g">
+                    <div class="ui-g-4" />
+                    <div class="ui-g-4">
+                        <h2 style="text-align: center;">Contact Us</h2>
+                        <h:form id="contactForm">
+                            <p:messages id="messages" globalOnly="true"/>
+                            <h:panelGrid columns="3" cellpadding="3" style="margin: 0 auto;">
+                                
+                                <p:outputLabel for="emailText" value="Email Address"/>
+                                <p:inputText id="emailText" value="#{homeBackingBean.contactEmail}"/>
+                                <p:message for="emailText" />
+                                
+                                <p:outputLabel for="nameText" value="Name"/>
+                                <p:inputText id="nameText" value="#{homeBackingBean.contactName}"/>
+                                <p:message for="nameText" />
+                                
+                                <p:outputLabel for="messageText" value="Message"/>
+                                <p:inputTextarea id="messageText" value="#{homeBackingBean.contactText}" style="width: 96%; height: 100%"/>
+                                <p:message for="messageText" />
+                                
+                                <p:commandButton id="submit" update="@form" value="Submit" action="#{homeBackingBean.onSubmitContactForm}" ajax="false"/>
+                            </h:panelGrid>
+                        </h:form>
+                    </div>
+                </div>
                 </f:facet>
             </p:panel>
         </h:body>
